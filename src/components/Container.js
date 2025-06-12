@@ -17,7 +17,16 @@ class Container extends React.Component {
 
   constructor() {
     super(...arguments);
+    this.createMobiledocEditor();
+  }
 
+  state = {
+    activeMarkupTags: [],
+    activeSectionTags: [],
+    activeSectionAttributes: [],
+  };
+
+  createMobiledocEditor = () => {
     if (typeof this.props.willCreateEditor === 'function') {
       this.props.willCreateEditor();
     }
@@ -58,12 +67,6 @@ class Container extends React.Component {
       this.props.didCreateEditor(this.editor);
     }
   }
-
-  state = {
-    activeMarkupTags: [],
-    activeSectionTags: [],
-    activeSectionAttributes: [],
-  };
 
   componentWillUnmount() {
     this.editor.destroy();
