@@ -1,7 +1,6 @@
 # react-mobiledoc-editor
 
 ![Build status](https://circleci.com/gh/joshfrench/react-mobiledoc-editor.svg?style=svg)
-![Dependency status](https://david-dm.org/upworthy/react-mobiledoc-editor.svg)
 
 A toolkit for Mobiledoc editors written using React and
 [Mobiledoc Kit](https://github.com/bustlelabs/mobiledoc-kit).
@@ -342,6 +341,16 @@ mobiledoc-specific props:
   value and payload to the underlying mobiledoc.
 - `name`: The name of this card.
 - `onTeardown`: A callback that can be called when the rendered content is torn down.
+
+### React 18 Support
+
+ To use custom card & atom components with React 18 without warnings, you can pass an instance of `createRoot` from react-dom v18 as a prop on the `Container`. Internally, components will render with `createRoot` if available and fallback to the legacy `render`:
+
+ ```js
+ import { createRoot } from 'react-dom/client';
+
+ <Container createRoot={createRoot}>...</Container>;
+ ```
 
 
 ## Development
